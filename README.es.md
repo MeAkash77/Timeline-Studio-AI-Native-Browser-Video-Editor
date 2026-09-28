@@ -1,0 +1,120 @@
+# Timeline Studio — Editor de vídeo con IA en el navegador
+
+[English](README.md) | [中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | **Español** | [Français](README.fr.md) | [Deutsch](README.de.md) | [Português](README.pt-BR.md) | [ไทย](README.th.md) | [Tiếng Việt](README.vi.md) | [Русский](README.ru.md)
+
+[![skills.sh](https://skills.sh/b/MartinDelophy/ai-video-editor)](https://skills.sh/MartinDelophy/ai-video-editor)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md) [![LINUX DO](https://shorturl.at/ggSqS)](https://linux.do)
+
+## Uso responsable de la síntesis profunda
+
+Esta herramienta utiliza tecnología de síntesis profunda y está destinada exclusivamente a la investigación técnica y el aprendizaje.
+
+Los usuarios deben asegurarse de:
+
+- utilizar únicamente imágenes o vídeos de su propio rostro o de personas que hayan otorgado una autorización legal;
+- no crear ni difundir contenido ilegal, infractor, falso o engañoso;
+- no presentar el contenido generado como imágenes reales ni suplantar la identidad de otra persona sin su consentimiento.
+
+El usuario será el único responsable de cualquier consecuencia legal derivada del incumplimiento de estos requisitos.
+
+## Novedades del proyecto
+
+- **2026-09-27** — Los subtítulos automáticos usan tiempos por palabra y se dividen en frases cortas o palabras para evitar grandes bloques en vídeos verticales. Vista previa, exportación y SRT comparten los mismos clips editables; controles en 13 idiomas. La voz IA también divide textos largos antes de sintetizarlos y ajusta cada subtítulo a su audio, incluida la voz del subtítulo seleccionado. La imagen y el SRT ocultan comas, puntos y punto y coma finales, conservando signos expresivos y el texto original para editar y generar voz.
+- **2026-09-27** — La reproducción de escritorio avanza la vista al llegar al 85%, situando el cabezal al 20%. El desplazamiento horizontal manual suspende el seguimiento; volver al cabezal o reiniciar la reproducción lo restaura. La pausa conserva la vista.
+- **2026-09-27** — Clips de vídeo unificados: vídeo principal e imagen en imagen reúnen nombre, miniaturas y onda del audio original. Ajusta los dB de cada clip sobre su onda, con la misma ganancia en vista previa y exportación, conservada al separar el audio. Interfaz en 13 idiomas. Todas las pistas de audio muestran ondas finas desde la base que siguen la ganancia, con picos naranjas sobre el límite visual y el estilo existente. Al arrastrar el cabezal, la vista previa avanza sin esperar la confirmación de presentación; al soltar se verifica el fotograma exacto.
+- **2026-09-21 — Quitar pausas:** Smart detecta pausas largas localmente con Silero VAD. Permite revisar y seleccionar cortes del vídeo principal y su audio, ajustar el umbral y el intervalo conservado, usar edición ripple, cancelar y deshacer, con interfaz en 13 idiomas.
+- **2026-09-20 — Ajuste del cabezal a marcadores:** Al arrastrar el cabezal blanco, la imagen se previsualiza en directo y se ajusta a marcadores y extremos de rangos, con guía de alineación y tiempo. Mantén Alt para desplazarte libremente. Los detalles muestran Listo antes de editar y Aplicar cambios después.
+
+Consulta el [Roadmap](ROADMAP.md) para el trabajo planificado, [Releases](https://github.com/MartinDelophy/ai-video-editor/releases) para los cambios publicados e [Issues](https://github.com/MartinDelophy/ai-video-editor/issues) para tareas y errores.
+
+## ¿Qué puede producir?
+
+Explora ejemplos reproducibles de antes y después, y recetas de edición:
+
+→ [AI Video Editing Skills Handbook](https://github.com/MartinDelophy/timeline-studio-handbook)
+
+<p align="center">
+  <a href="https://trendshift.io/repositories/77422?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-77422" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/77422/daily?language=JavaScript" alt="MartinDelophy%2Fai-video-editor | Trendshift" width="250" height="55"/></a>
+  <a href="https://trendshift.io/repositories/77422?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-77422" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/77422/weekly?language=JavaScript" alt="MartinDelophy%2Fai-video-editor | Trendshift" width="250" height="55"/></a>
+</p>
+
+Timeline Studio es un editor de vídeo con IA, local y ejecutado en el navegador. Combina una línea de tiempo multipista al estilo CapCut con locuciones de IA, subtítulos automáticos, herramientas de visión, avatares parlantes y exportación offline determinista.
+
+[Abrir el editor](https://video-editor.ai-creator.top/) · [Ver la demo](https://www.youtube.com/watch?v=chdRPG2ndMs) · [Hugging Face Space](https://huggingface.co/spaces/haixin/timeline-studio)
+
+![Editor Timeline Studio](docs/screenshots/editor-timeline.png)
+
+## Funciones principales
+
+- Locución multilingüe con Piper/VITS ONNX y Kokoro 82M.
+- Música de IA local con Stable Audio 3 Small Q4 ONNX mediante WebGPU, traducción de indicaciones libres, opciones de 30/60/90/120 segundos, bucles largos guiados por la forma de onda, caché persistente del modelo e incorporación automática a Mis recursos.
+- Subtítulos automáticos con Whisper small q8 ONNX.
+- Encuadre inteligente con YOLOS tiny y MODNet.
+- Separación de voz y música, y creación de avatares con JoyVASA y LivePortrait.
+- Edición multipista con superposiciones, máscaras, filtros, animaciones y fotogramas clave.
+- Exportación MP4/WebM en el navegador con WebCodecs y mezcla de audio.
+- PWA instalable, caché local de modelos y archivos de proyecto `.timeline`.
+
+## Demo de locución con IA
+
+https://github.com/user-attachments/assets/304a744e-d620-4380-9c17-19af3726f5a4
+
+## Agent Skill
+
+Este repositorio incluye el Agent Skill [`edit-timeline-studio`](skills/edit-timeline-studio/SKILL.md) para planificar, ejecutar y verificar líneas de tiempo de vídeo editables. Se instala con GitHub CLI 2.90.0 o posterior.
+
+La instalación mediante [skills.sh](https://skills.sh/MartinDelophy/ai-video-editor) requiere Node.js 22.20.0 o posterior.
+
+```bash
+npx skills add MartinDelophy/ai-video-editor --skill edit-timeline-studio
+```
+
+```bash
+# Claude Code
+gh skill install MartinDelophy/ai-video-editor edit-timeline-studio --agent claude-code --scope user
+
+# Codex
+gh skill install MartinDelophy/ai-video-editor edit-timeline-studio --agent codex --scope user
+```
+
+Añade `--pin v1.0.8` para instalar la versión verificada en lugar de seguir la última publicación. Antes de instalar, puedes revisarlo con `gh skill preview MartinDelophy/ai-video-editor edit-timeline-studio`.
+
+## Hoja de ruta
+
+- **Ahora:** reforzar la exportación offline determinista, mejorar la fiabilidad de la línea de tiempo y ampliar las pruebas de extremo a extremo en el navegador.
+- **Después:** ampliar la paridad del renderizado headless, los comandos WebMCP revisables y el intercambio de plantillas reutilizables.
+- **Más adelante:** añadir revisión colaborativa, una interfaz de extensiones y más modelos de IA verificados localmente.
+
+Las prioridades se deciden en [GitHub Discussions](https://github.com/MartinDelophy/ai-video-editor/discussions).
+
+## Se busca ayuda
+
+Buscamos contribuciones sobre medios en el navegador, WebCodecs, WebGPU/ONNX, UX de la línea de tiempo, localización, pruebas y documentación. Informa de errores reproducibles en [Issues](https://github.com/MartinDelophy/ai-video-editor/issues), comparte ideas en [Discussions](https://github.com/MartinDelophy/ai-video-editor/discussions) o aporta correcciones, pruebas, traducciones y ejemplos concretos.
+
+## Inicio rápido
+
+Requiere Node.js 20+ y un navegador Chromium moderno. Se recomienda WebGPU.
+
+```bash
+git clone https://github.com/MartinDelophy/ai-video-editor.git
+cd ai-video-editor
+npm install
+npm run dev
+```
+
+## Validación
+
+```bash
+npm run build
+npm run check
+```
+
+## Apoyo y comentarios
+
+Si este proyecto te resulta útil, considera darle una ⭐ Star. Si encuentras algún problema, [abre un Issue](https://github.com/MartinDelophy/ai-video-editor/issues).
+
+Únete a nuestra [comunidad de Discord](https://discord.gg/uq2uvUTBr) para hacer preguntas, compartir comentarios y conectar con otros usuarios y colaboradores.
+
+## Licencia
+
+[MIT](LICENSE)
