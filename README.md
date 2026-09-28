@@ -61,102 +61,75 @@ https://github.com/user-attachments/assets/aea9f5b4-c720-4b0c-9067-5ec124eef982
 
 
 Timeline Studio — Browser AI Video Editor
+A local-first, browser-native AI video editing platform built around modern Web APIs, on-device inference, multi-track editing, and deterministic media export.
 
-<p align="center">
-  <strong>A local-first, browser-native AI video editing platform built around modern Web APIs, on-device inference, multi-track editing, and deterministic media export.</strong>
-</p>
+https://img.shields.io/badge/Live_Demo-video--editor.ai--creator.top-6C47FF?style=for-the-badge&logo=googlechrome&logoColor=white
+https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github&logoColor=white
+https://img.shields.io/badge/Roadmap-ROADMAP.md-0A66C2?style=for-the-badge&logo=readthedocs&logoColor=white
+https://img.shields.io/badge/Contributing-CONTRIBUTING.md-2EA043?style=for-the-badge&logo=handshake&logoColor=white
 
-<p align="center">
-  <a href="https://video-editor.ai-creator.top/">Live Demo</a>
-  ·
-  <a href="https://github.com/MartinDelophy/ai-video-editor">Source</a>
-  ·
-  <a href="ROADMAP.md">Roadmap</a>
-  ·
-  <a href="CONTRIBUTING.md">Contributing</a>
-</p>
-
-<p align="center">
-
-
-
-
-
-
-
-
-
-
-
-</p>
+https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square
+https://img.shields.io/badge/Model_Licenses-MODEL__LICENSES.md-orange?style=flat-square
+https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black
+https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white
+https://img.shields.io/badge/Vite-Bundler-646CFF?style=flat-square&logo=vite&logoColor=white
+https://img.shields.io/badge/WebGPU-Accelerated-00C7B7?style=flat-square&logo=webgpu&logoColor=white
+https://img.shields.io/badge/ONNX_Runtime-Web-005CED?style=flat-square&logo=onnx&logoColor=white
+https://img.shields.io/badge/WebCodecs-Native-4285F4?style=flat-square&logo=googlechrome&logoColor=white
+https://img.shields.io/badge/FFmpeg-WASM-007808?style=flat-square&logo=ffmpeg&logoColor=white
+https://img.shields.io/badge/PWA-Installable-5A0FC8?style=flat-square&logo=pwa&logoColor=white
 
 Product Overview
-
 Timeline Studio is a local-first AI video editor that brings a professional multi-track editing workflow and browser-native AI inference into a single web application.
 
 Instead of treating the browser as a thin client for a remote media backend, Timeline Studio explores how far a modern browser can go as the editing runtime itself.
 
 The application combines:
 
-professional multi-track timeline editing;
+Professional multi-track timeline editing
 
-browser-local AI inference;
+Browser-local AI inference
 
-WebGPU acceleration;
+WebGPU acceleration
 
-ONNX Runtime Web;
+ONNX Runtime Web
 
-WebAssembly media processing;
+WebAssembly media processing
 
-WebCodecs-based video composition;
+WebCodecs-based video composition
 
-FFmpeg/WASM fallback processing;
+FFmpeg/WASM fallback processing
 
-automatic speech recognition and captions;
+Automatic speech recognition and captions
 
-AI music generation;
+AI music generation
 
-AI voice synthesis;
+AI voice synthesis
 
-intelligent subject detection and framing;
+Intelligent subject detection and framing
 
-image/video restoration and repair;
+Image/video restoration and repair
 
-vocal separation;
+Vocal separation
 
-digital-human generation;
+Digital-human generation
 
-portable .timeline projects;
+Portable .timeline projects
 
-installable PWA support;
+Installable PWA support
 
-deterministic offline-oriented export workflows.
+Deterministic offline-oriented export workflows
 
-Core idea: move as much of the media and AI workflow as practical into the browser while preserving an editable timeline as the source of truth.
+Core idea: Move as much of the media and AI workflow as practical into the browser while preserving an editable timeline as the source of truth.
 
 Why This Project Is Interesting
-
 Traditional web video editors commonly depend on a server-side pipeline:
 
-User Media
-    │
-    ▼
-Upload
-    │
-    ▼
-Remote Processing
-    │
-    ▼
-AI / Rendering Backend
-    │
-    ▼
-Encoded Output
-    │
-    ▼
-Download
-
+text
+User Media → Upload → Remote Processing → AI/Rendering Backend → Encoded Output → Download
 Timeline Studio explores a different architecture:
 
+text
                  BROWSER
 ┌─────────────────────────────────────────────────┐
 │                                                 │
@@ -170,417 +143,166 @@ Timeline Studio explores a different architecture:
 │                     │       ONNX                │
 │                     │       WASM                │
 │                     │                           │
-│                     └────► Composition           │
+│                     └────► Composition          │
 │                                │                │
-│                         WebCodecs / FFmpeg       │
+│                         WebCodecs / FFmpeg      │
 │                                │                │
 │                                ▼                │
-│                           MP4 / WebM             │
+│                           MP4 / WebM            │
 │                                                 │
 └─────────────────────────────────────────────────┘
-
 Supported workflows can run without uploading project media to an editing backend.
 
-This architecture introduces a different engineering problem: browser constraints become part of the system design.
-
-That means dealing with:
-
-GPU availability;
-
-WASM execution;
-
-model size;
-
-browser memory;
-
-worker isolation;
-
-model loading and caching;
-
-media decoding;
-
-audio synchronization;
-
-preview performance;
-
-export determinism;
-
-cross-browser API availability.
+This architecture introduces a different engineering problem: browser constraints become part of the system design. That means dealing with GPU availability, WASM execution, model size, browser memory, worker isolation, model loading/caching, media decoding, audio synchronization, preview performance, export determinism, and cross-browser API availability.
 
 Key Capabilities
-
 1. Multi-Track Timeline
-
 Timeline Studio provides a CapCut-style editing model with a portable, editable timeline.
 
-Editing capabilities
-
-contiguous main Visuals track;
-
-picture-in-picture overlays;
-
-independent captions;
-
-stickers;
-
-voiceover;
-
-separated source audio;
-
-music;
-
-split / duplicate / delete;
-
-undo / redo;
-
-timeline zoom;
-
-snapping;
-
-alignment guides;
-
-clip menus;
-
-direct canvas manipulation;
-
-proportional resize;
-
-rotation;
-
-masks;
-
-filters;
-
-effects;
-
-animation;
-
-speed control;
-
-explicit keyframes;
-
-color grading;
-
-portable .timeline projects.
-
+Editing	Organization	Visual
+Split / duplicate / delete	Contiguous main Visuals track	Direct canvas manipulation
+Undo / redo	Picture-in-picture overlays	Proportional resize
+Timeline zoom	Independent captions	Rotation
+Snapping	Stickers	Masks
+Alignment guides	Voiceover	Filters
+Clip menus	Separated source audio	Effects
+Explicit keyframes	Music	Animation
+Color grading	Portable .timeline projects	Speed control
 The timeline is treated as structured data rather than an opaque rendered video.
 
 2. Browser AI Engine
-
 Timeline Studio integrates multiple AI workloads directly into the browser.
 
-AI Music
-
+🎵 AI Music
 Stable Audio 3 Small Q4 ONNX
 
-WebGPU inference;
+WebGPU inference
 
-free-form prompts;
+Free-form prompts & prompt translation
 
-prompt translation;
+30 / 60 / 90 / 120 second generation
 
-30 / 60 / 90 / 120 second generation;
+Waveform-aware long-track looping
 
-waveform-aware long-track looping;
+Persistent model caching
 
-persistent model caching;
+Automatic insertion into project assets
 
-automatic insertion into project assets.
-
-Prompt
-  │
-  ▼
-Prompt Translation
-  │
-  ▼
-Stable Audio
-  │
-  ▼
-WebGPU / ONNX
-  │
-  ▼
-Generated Audio
-  │
-  ▼
-Waveform Analysis
-  │
-  ▼
-Timeline Music Track
-
-Automatic Captions
-
+text
+Prompt → Prompt Translation → Stable Audio → WebGPU/ONNX → Generated Audio
+   → Waveform Analysis → Timeline Music Track
+📝 Automatic Captions
 Whisper small q8 ONNX
 
-The caption pipeline supports:
+Local transcription, word timestamps
 
-local transcription;
+Short phrase / word grouping
 
-word timestamps;
+Waveform-aware timing
 
-short phrase / word grouping;
+Editable caption clips
 
-waveform-aware timing;
+Synchronized preview and export
 
-editable caption clips;
+SRT generation
 
-synchronized preview and export;
+Multilingual UI
 
-SRT generation;
+Caption-scoped voice generation
 
-multilingual UI;
+text
+Preview → Timeline captions
+       → Export
+       → SRT
+🎯 Smart Framing
+YOLOS tiny for subject detection
 
-caption-scoped voice generation.
+MODNet for portrait matting
 
-The same editable caption representation can drive:
+Subject-aware cropping, portrait framing
 
-Preview
-   │
-   ├──► Timeline captions
-   │
-   ├──► Export
-   │
-   └──► SRT
+Caption-safe positioning
 
-This avoids maintaining separate timing representations for each output path.
+Background removal
 
-Smart Framing
+Image & complete-video processing
 
-The smart-framing pipeline combines:
+text
+Video/Image → Subject Detection → Bounding/Matte → Framing Logic
+   → Smart Crop / Caption Avoidance / Background Removal
+🛠 AI Repair
+MI-GAN — watermark/object removal with timed repair regions and before/after review
 
-YOLOS tiny for subject detection;
+NanoVSR — WebGPU-based restoration and 4× enhancement workflows
 
-MODNet for portrait matting.
+Reversible visual review rather than immediately replacing the source
 
-It can support:
+🎙 AI Voiceover
+Kokoro 82M
 
-subject-aware cropping;
+Piper browser voices
 
-portrait framing;
+VITS-based voices
 
-caption-safe positioning;
+Multilingual voice workflows
 
-background removal;
+Long-script chunking & phrase-level synthesis
 
-image processing;
+Audio-aware caption timing
 
-complete-video processing.
+🎚 AI Vocal Separation
+Isolate vocals and place resulting instrumental material into the music workflow — no desktop application required.
 
-Conceptually:
+🧑 Digital Human
+JoyVASA + LivePortrait
 
-Video / Image
-      │
-      ▼
-Subject Detection
-      │
-      ▼
-Bounding / Matte
-      │
-      ▼
-Framing Logic
-      │
-      ├──► Smart Crop
-      ├──► Caption Avoidance
-      └──► Background Removal
+WebGPU acceleration
 
-AI Repair
+256px preview paths / 512px quality paths
 
-Browser-local repair workflows use:
-
-MI-GAN
-
-For watermark/object removal with timed repair regions and before/after review.
-
-NanoVSR
-
-For WebGPU-based restoration and 4× enhancement workflows.
-
-The UI is designed around reversible visual review rather than immediately replacing the source.
-
-Source
-  │
-  ├──────────────► Original
-  │
-  ▼
-Repair / Restoration
-  │
-  ▼
-Preview
-  │
-  ▼
-Before / After
-  │
-  ▼
-Timeline / Export
-
-AI Voiceover
-
-Supported browser voice workflows include:
-
-Kokoro 82M;
-
-Piper browser voices;
-
-VITS-based voices;
-
-multilingual voice workflows;
-
-long-script chunking;
-
-phrase-level synthesis;
-
-audio-aware caption timing.
-
-Long scripts can be divided into smaller synthesis units before being placed back into the timeline.
-
-AI Vocal Separation
-
-Audio separation can isolate vocals and place the resulting instrumental material into the music workflow without requiring a separate desktop application.
-
-Digital Human
-
-The project also integrates neural talking-avatar workflows using:
-
-JoyVASA;
-
-LivePortrait;
-
-WebGPU acceleration;
-
-256px preview paths;
-
-512px quality paths.
-
-The conceptual pipeline is:
-
-Audio
-  │
-  ▼
-JoyVASA
-  │
-  ▼
-Audio-to-Motion
-  │
-  ▼
-LivePortrait
-  │
-  ▼
-Neural Rendering
-  │
-  ▼
-Digital Human
-
+text
+Audio → JoyVASA → Audio-to-Motion → LivePortrait → Neural Rendering → Digital Human
 3. Local-First Model Delivery
+Large browser models are expensive in bandwidth and memory, so model lifecycle is treated as part of the application architecture.
 
-Large browser models are expensive in terms of bandwidth and memory, so model lifecycle is treated as part of the application architecture.
+Lazy model loading
 
-Timeline Studio uses:
+Revision-pinned model assets
 
-lazy model loading;
+Service-worker caching
 
-revision-pinned model assets;
+Persistent browser cache
 
-service-worker caching;
+Multiple model mirrors (Hugging Face + ModelScope)
 
-persistent browser cache;
+Runtime source fallback
 
-multiple model mirrors;
-
-runtime source fallback.
-
-Model delivery can use both:
-
-Hugging Face;
-
-ModelScope.
-
-The application can remember a working model source for the runtime and fall back when a source is unavailable.
-
-This allows the AI layer to be more resilient without forcing users to manually manage model files.
+The application remembers a working model source and falls back when a source is unavailable.
 
 4. Media Engine
-
-The media pipeline uses modern browser technologies rather than relying on one monolithic renderer.
-
-Core media technologies
-
-Technology
-
-Role
-
-WebCodecs
-
-Browser-native video/audio encoding and decoding
-
-FFmpeg WASM
-
-Media processing and fallback workflows
-
-MediaBunny
-
-Browser media pipeline utilities
-
-LibAV/WebCodecs
-
-Media compatibility paths
-
-AAC Encoder
-
-Browser audio encoding
-
-Web Audio
-
-Audio processing and mixing
-
-Canvas
-
-Visual composition
-
-Web Workers
-
-Heavy background processing
-
+Technology	Role
+WebCodecs	Browser-native video/audio encoding & decoding
+FFmpeg WASM	Media processing and fallback workflows
+MediaBunny	Browser media pipeline utilities
+LibAV / WebCodecs	Media compatibility paths
+AAC Encoder	Browser audio encoding
+Web Audio	Audio processing and mixing
+Canvas	Visual composition
+Web Workers	Heavy background processing
 5. Preview vs Export Architecture
-
 A major architectural decision is separating interactive preview from deterministic export.
 
-Preview
-
-Optimized for:
-
-responsiveness;
-
-scrubbing;
-
-interactive editing;
-
-direct media playback;
-
-low-latency UI feedback.
-
-Export
-
-Optimized for:
-
-reproducibility;
-
-correct timing;
-
-consistent geometry;
-
-audio mixing;
-
-captions;
-
-overlays;
-
-effects;
-
-final encoding.
-
+Interactive Preview	Deterministic Export
+Responsiveness	Reproducibility
+Scrubbing	Correct timing
+Interactive editing	Consistent geometry
+Direct media playback	Audio mixing
+Low-latency UI feedback	Captions, overlays, effects
+Final encoding
+text
                     PROJECT MODEL
                          │
               ┌──────────┴──────────┐
-              │                     │
               ▼                     ▼
         INTERACTIVE             EXPORT
           PREVIEW              PIPELINE
@@ -590,145 +312,85 @@ final encoding.
               │               WebCodecs
               │                     │
               │                  FFmpeg
-              │                     │
               └──────────┬──────────┘
                          ▼
                     FINAL MEDIA
-
 The project model remains the source of truth.
 
 6. Portable .timeline Projects
-
-Timeline Studio uses an editable project representation instead of treating a rendered MP4 as the only artifact.
-
 A project can contain structured information for:
 
-tracks;
+Tracks, clips, timestamps
 
-clips;
+Captions, overlays, audio, transitions
 
-timestamps;
+Project settings, media references, editing properties
 
-captions;
-
-overlays;
-
-audio;
-
-transitions;
-
-project settings;
-
-media references;
-
-editing properties.
-
-This makes the editing state:
-
-inspectable;
-
-reproducible;
-
-editable;
-
-automatable;
-
-suitable for agent workflows.
+This makes the editing state inspectable, reproducible, editable, automatable, and suitable for agent workflows.
 
 Agent & Automation Layer
-
-The repository includes an AI Video Editing Skill designed for Codex, Claude Code, Copilot and Gemini CLI workflows.
+The repository includes an AI Video Editing Skill designed for Codex, Claude Code, Copilot, and Gemini CLI workflows.
 
 The agent layer can help with:
 
-inspecting media;
+Inspecting media & project structure
 
-inspecting project structure;
+Planning and validating edits
 
-planning edits;
+Applying supported timeline operations
 
-validating edit plans;
+Inspecting tracks, clips, and transcripts
 
-applying supported timeline operations;
+Producing field-level diffs
 
-inspecting tracks;
+Transactional operations with idempotent operation IDs
 
-inspecting clips;
+Rendering supported project subsets
 
-inspecting transcripts;
+Verifying generated project artifacts
 
-producing field-level diffs;
-
-transactional operations;
-
-idempotent operation IDs;
-
-rendering supported project subsets;
-
-verifying generated project artifacts.
-
-Example commands
-
+Example Commands
+bash
 npm run agent -- project.inspect /absolute/path/project.timeline
-
 npm run agent -- track.inspect /absolute/path/project.timeline visuals
-
 npm run agent -- clip.inspect /absolute/path/project.timeline visual-123
-
 npm run agent -- transcript.inspect /absolute/path/project.timeline voice-123
-
 npm run agent -- project.diff /absolute/path/edit-plan.json
-
 npm run agent -- project.run /absolute/path/edit-plan.json
-
 npm run agent -- project.render /absolute/path/render-request.json
-
 The repository also contains a browser WebMCP integration for structured project operations and browser-based compatibility workflows.
 
 Architecture
-
-At a high level:
-
+text
 ┌───────────────────────────────────────────────────────────────┐
 │                         REACT UI                              │
-│                                                               │
 │ Editor · Timeline · Canvas · Panels · Assets · Controls       │
 └──────────────────────────────┬────────────────────────────────┘
-                               │
                                ▼
 ┌───────────────────────────────────────────────────────────────┐
 │                     PROJECT / TIMELINE MODEL                   │
-│                                                               │
 │ Tracks · Clips · Captions · Keyframes · Effects · Audio       │
 └───────────────┬─────────────────────┬─────────────────────────┘
-                │                     │
                 ▼                     ▼
 ┌──────────────────────────┐  ┌─────────────────────────────────┐
 │      MEDIA PIPELINE      │  │           AI PIPELINE           │
-│                          │  │                                 │
-│ WebCodecs                │  │ ONNX Runtime Web                │
-│ MediaBunny               │  │ WebGPU                          │
-│ FFmpeg WASM              │  │ Transformers                    │
-│ AAC                      │  │ MediaPipe                       │
-│ Web Audio                │  │ Whisper                         │
-└─────────────┬────────────┘  │ Stable Audio                    │
-              │               │ MI-GAN                          │
-              ▼               │ YOLOS / MODNet                  │
-┌──────────────────────────┐  │ NanoVSR                         │
-│       COMPOSITOR         │  │ JoyVASA / LivePortrait          │
-│                          │  └──────────────┬──────────────────┘
-│ Preview + Export         │                 │
+│ WebCodecs · MediaBunny   │  │ ONNX Runtime Web · WebGPU       │
+│ FFmpeg WASM · AAC        │  │ Transformers · MediaPipe        │
+│ Web Audio                │  │ Whisper · Stable Audio          │
+└─────────────┬────────────┘  │ MI-GAN · YOLOS/MODNet           │
+              ▼               │ NanoVSR · JoyVASA/LivePortrait  │
+┌──────────────────────────┐  └──────────────┬──────────────────┘
+│       COMPOSITOR         │                 │
+│   Preview + Export       │                 │
 └─────────────┬────────────┘                 │
-              │                              │
               └──────────────┬───────────────┘
                              ▼
                     ┌─────────────────┐
                     │ FINAL EXPORT    │
-                    │ MP4 / WebM      │
+                    │   MP4 / WebM    │
                     └─────────────────┘
-
 Repository Structure
-
+text
 .
 ├── src/
 │   ├── assets/
@@ -744,17 +406,13 @@ Repository Structure
 │   ├── vendor/
 │   │   └── libav-timeline-compat/
 │   └── workers/
-│
 ├── scripts/
 │   └── timeline-command.mjs
-│
 ├── skills/
 │   └── edit-timeline-studio/
-│
 ├── docs/
 │   ├── screenshots/
 │   └── ...
-│
 ├── index.html
 ├── package.json
 ├── vite.config.mjs
@@ -765,200 +423,114 @@ Repository Structure
 ├── MODEL_LICENSES.md
 ├── CONTRIBUTING.md
 └── LICENSE
-
 Technology Stack
-
 Frontend
+https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black
+https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white
+https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white
+https://img.shields.io/badge/Phosphor_Icons-FF6B6B?style=flat-square&logo=phosphor&logoColor=white
 
-React 19
-
-TypeScript
-
-Vite
-
-React DOM
-
-Phosphor Icons
+React 19, TypeScript, Vite, React DOM, Phosphor Icons
 
 Browser AI / ML
+https://img.shields.io/badge/ONNX_Runtime_Web-005CED?style=flat-square&logo=onnx&logoColor=white
+https://img.shields.io/badge/WebGPU-00C7B7?style=flat-square&logo=webgpu&logoColor=white
+https://img.shields.io/badge/Hugging_Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black
+https://img.shields.io/badge/MediaPipe-0097A7?style=flat-square&logo=google&logoColor=white
+https://img.shields.io/badge/WebAssembly-654FF0?style=flat-square&logo=webassembly&logoColor=white
 
-ONNX Runtime Web
+ONNX Runtime Web, Hugging Face Transformers, WebGPU, MediaPipe, WebAssembly
 
-Hugging Face Transformers
+Kokoro, VITS, Piper, Whisper, Stable Audio
 
-WebGPU
-
-MediaPipe
-
-WebAssembly
-
-Kokoro
-
-VITS
-
-Piper
-
-Whisper
-
-Stable Audio
-
-YOLOS
-
-MODNet
-
-MI-GAN
-
-NanoVSR
-
-JoyVASA
-
-LivePortrait
+YOLOS, MODNet, MI-GAN, NanoVSR, JoyVASA, LivePortrait
 
 Media
+https://img.shields.io/badge/WebCodecs-4285F4?style=flat-square&logo=googlechrome&logoColor=white
+https://img.shields.io/badge/FFmpeg-007808?style=flat-square&logo=ffmpeg&logoColor=white
+https://img.shields.io/badge/Web_Audio-FF6B00?style=flat-square&logo=webaudio&logoColor=white
 
-WebCodecs
-
-FFmpeg
-
-MediaBunny
-
-LibAV compatibility layer
-
-AAC encoding
-
-Web Audio APIs
+WebCodecs, FFmpeg, MediaBunny, LibAV compatibility layer, AAC encoding, Web Audio APIs
 
 Application Architecture
+https://img.shields.io/badge/PWA-5A0FC8?style=flat-square&logo=pwa&logoColor=white
+https://img.shields.io/badge/Service_Worker-4285F4?style=flat-square&logo=googlechrome&logoColor=white
+https://img.shields.io/badge/Zod-3E67B1?style=flat-square&logo=zod&logoColor=white
 
-Service Worker
+Service Worker, PWA, Web Workers, Local browser caching
 
-PWA
-
-Web Workers
-
-Local browser caching
-
-Portable project files
-
-MCP / WebMCP tooling
-
-Zod validation
+Portable project files, MCP / WebMCP tooling, Zod validation
 
 Browser Requirements
-
 Recommended
-
-Chromium-based browser
-
-Recent Chrome / Chromium / Edge
+Chromium-based browser (recent Chrome / Chromium / Edge)
 
 WebGPU-enabled hardware
 
-Recommended capabilities
-
-WebGPU       ✓ Recommended
-WebAssembly  ✓ Required for several workflows
-WebCodecs    ✓ Recommended
-Workers      ✓ Required by heavy processing paths
-IndexedDB    ✓ Recommended for model caching
-
-The heaviest AI workflows benefit significantly from WebGPU.
-
-Hardware and browser support can affect:
-
-model loading;
-
-inference speed;
-
-memory usage;
-
-available AI features;
-
-export performance.
+Capability Matrix
+Capability	Requirement
+WebGPU	✓ Recommended
+WebAssembly	✓ Required for several workflows
+WebCodecs	✓ Recommended
+Workers	✓ Required by heavy processing paths
+IndexedDB	✓ Recommended for model caching
+The heaviest AI workflows benefit significantly from WebGPU. Hardware and browser support can affect model loading, inference speed, memory usage, available AI features, and export performance.
 
 Quick Start
-
 1. Clone
-
+bash
 git clone https://github.com/MartinDelophy/ai-video-editor.git
 cd ai-video-editor
-
 2. Install dependencies
-
+bash
 npm install
-
 3. Start development server
-
+bash
 npm run dev
-
-Open the local URL printed by Vite.
-
-The first AI workflow may download model assets. Later runs can reuse browser cache.
+Open the local URL printed by Vite. The first AI workflow may download model assets — later runs can reuse browser cache.
 
 Production Build
-
+bash
 npm run build
-
-Preview the production build:
-
-npm run preview
-
+npm run preview   # preview the production build
 Repository Validation
-
 Run the complete project check:
 
+bash
 npm run check
-
 This runs:
 
-ESLint
-   ↓
-TypeScript
-   ↓
-Vite production build
-
-Individual checks:
-
+text
+ESLint → TypeScript → Vite production build
+Individual Checks
+bash
 npm run lint
-
 npm run typecheck
-
 npm run build
-
-Formatting:
-
+Formatting
+bash
 npm run format
-
 npm run format:check
-
 Deployment
-
 The repository includes a netlify.toml configuration.
 
-Build:
-
+bash
 npm run build
-
-Deploy:
-
 npx netlify-cli deploy --prod --dir=dist
-
 The deployment configuration is designed around:
 
-Vite output;
+Vite output
 
-SPA fallback;
+SPA fallback
 
-browser media workers;
+Browser media workers
 
-cross-origin isolation requirements used by browser AI/media workflows.
+Cross-origin isolation requirements used by browser AI/media workflows
 
 Performance & Engineering Considerations
+Browser AI changes the usual frontend performance model. The application has to manage several expensive resources simultaneously:
 
-Browser AI changes the usual frontend performance model.
-
-The application has to manage several expensive resources simultaneously:
-
+text
                Browser Memory
                      │
         ┌────────────┼────────────┐
@@ -968,181 +540,85 @@ The application has to manage several expensive resources simultaneously:
         └────────────┼────────────┘
                      ▼
                   Timeline
-                     │
                      ▼
                  Compositor
-                     │
                      ▼
                   Export
+Important Engineering Concerns
+Model Lifecycle — Models should not all load at application startup:
 
-Important engineering concerns include:
+text
+User requests feature → Lazy-load model → Initialize runtime
+   → Run inference → Cache model → Reuse on future runs
+Heavy Computation — Long-running AI and media operations use workers so the UI remains responsive.
 
-Model lifecycle
+Preview Performance — Interactive preview prioritizes responsiveness rather than performing a full final-quality render for every frame.
 
-Models should not all load at application startup.
-
-Instead:
-
-User requests feature
-        ↓
-Lazy-load model
-        ↓
-Initialize runtime
-        ↓
-Run inference
-        ↓
-Cache model
-        ↓
-Reuse on future runs
-
-Heavy computation
-
-Long-running AI and media operations can use workers so that the UI remains responsive.
-
-Preview performance
-
-Interactive preview prioritizes responsiveness rather than performing a full final-quality render for every frame.
-
-Export correctness
-
-The export path independently composes the timeline so that final media output does not depend on the exact state of interactive preview rendering.
+Export Correctness — The export path independently composes the timeline so final media output does not depend on the exact state of interactive preview rendering.
 
 Feature Matrix
-
-Area
-
-Capability
-
-Timeline
-
-Multi-track editing
-
-Video
-
-Main visual track + overlays
-
-Audio
-
-Voiceover, music, separated source audio
-
-Captions
-
-Whisper transcription + editable timed clips
-
-AI Music
-
-Stable Audio via WebGPU / ONNX
-
-AI Repair
-
-MI-GAN
-
-Restoration
-
-NanoVSR
-
-Smart Crop
-
-YOLOS + MODNet
-
-Voice
-
-Kokoro / Piper / VITS workflows
-
-Vocal Separation
-
-Browser-local separation
-
-Digital Human
-
-JoyVASA + LivePortrait
-
-Rendering
-
-WebCodecs + FFmpeg fallback
-
-Projects
-
-Portable .timeline files
-
-PWA
-
-Installable application
-
-Caching
-
-Service worker + model cache
-
-Automation
-
-Agent Skill + command runner
-
-Browser Automation
-
-WebMCP integration
-
-Localization
-
-13 interface languages
-
+Area	Capability
+Timeline	Multi-track editing
+Video	Main visual track + overlays
+Audio	Voiceover, music, separated source audio
+Captions	Whisper transcription + editable timed clips
+AI Music	Stable Audio via WebGPU / ONNX
+AI Repair	MI-GAN
+Restoration	NanoVSR
+Smart Crop	YOLOS + MODNet
+Voice	Kokoro / Piper / VITS workflows
+Vocal Separation	Browser-local separation
+Digital Human	JoyVASA + LivePortrait
+Rendering	WebCodecs + FFmpeg fallback
+Projects	Portable .timeline files
+PWA	Installable application
+Caching	Service worker + model cache
+Automation	Agent Skill + command runner
+Browser Automation	WebMCP integration
+Localization	13 interface languages
 Security & Privacy Model
-
 Timeline Studio is designed around a local-first workflow.
 
 For supported local inference paths:
 
-User Media
-    │
-    ▼
-Browser
-    │
-    ├── AI inference
-    ├── timeline processing
-    ├── media composition
-    └── export
+text
+User Media → Browser
+              ├── AI inference
+              ├── timeline processing
+              ├── media composition
+              └── export
+…rather than automatically sending project media to a remote editing backend.
 
-rather than automatically sending project media to a remote editing backend.
+Users should distinguish between:
 
-However, users should distinguish between:
+Local media processing
 
-local media processing;
+Remote model delivery
 
-remote model delivery;
+Optional external integrations
 
-optional external integrations;
-
-third-party model hosting.
+Third-party model hosting
 
 Model files may be downloaded from configured model providers even when the actual project media remains local.
 
 Responsible Use of Deep-Synthesis Features
-
-Timeline Studio contains deep-synthesis capabilities including voice generation and digital-human workflows.
-
-Use these features responsibly.
+Timeline Studio contains deep-synthesis capabilities including voice generation and digital-human workflows. Use these features responsibly.
 
 Users should:
 
-use facial images, videos, and voices they own or are legally authorized to process;
+Use facial images, videos, and voices they own or are legally authorized to process
 
-obtain appropriate consent when working with another person's likeness or voice;
+Obtain appropriate consent when working with another person's likeness or voice
 
-avoid deceptive impersonation;
+Avoid deceptive impersonation
 
-avoid creating or distributing illegal, infringing, fraudulent, or misleading content;
+Avoid creating or distributing illegal, infringing, fraudulent, or misleading content
 
-clearly distinguish generated media from authentic recordings where appropriate.
+Clearly distinguish generated media from authentic recordings where appropriate
 
-Third-party model licenses and usage restrictions may apply independently of the project's MIT license.
-
-See:
-
-MODEL_LICENSES.md
-
-before redistribution or commercial use.
+Third-party model licenses and usage restrictions may apply independently of the project's MIT license. See MODEL_LICENSES.md before redistribution or commercial use.
 
 Model & Asset Licensing
-
 The original application source is licensed under MIT.
 
 However:
@@ -1151,88 +627,59 @@ The MIT license does not automatically apply to third-party model weights, datas
 
 Always review the upstream license for each model before:
 
-redistribution;
+Redistribution
 
-commercial deployment;
+Commercial deployment
 
-bundling model weights;
+Bundling model weights
 
-publishing derivative assets;
+Publishing derivative assets
 
-creating hosted services.
+Creating hosted services
 
 Relevant model documentation and licenses should be treated independently from the source-code license.
 
 Development Roadmap
-
 The project roadmap focuses on improving the editing and automation architecture.
 
-Current focus
+🎯 Current Focus
+Deterministic offline export
 
-deterministic offline export;
+Timeline reliability
 
-timeline reliability;
+Command registry expansion
 
-command registry expansion;
+Browser media reliability
 
-browser media reliability.
+🔜 Next
+Improved headless/browser render parity
 
-Next
+Expanded WebMCP command coverage
 
-improved headless/browser render parity;
+More robust automated project verification
 
-expanded WebMCP command coverage;
+🔮 Later
+Collaborative review workflows
 
-more robust automated project verification.
+Plugin extension surfaces
 
-Later
-
-collaborative review workflows;
-
-plugin extension surfaces;
-
-additional locally verified AI models.
+Additional locally verified AI models
 
 See ROADMAP.md.
 
 Contributing
-
 Contributions are welcome around:
 
-browser media;
-
-WebCodecs;
-
-WebGPU;
-
-ONNX Runtime;
-
-AI model integration;
-
-timeline UX;
-
-performance;
-
-testing;
-
-localization;
-
-accessibility;
-
-documentation;
-
-automation tooling.
+browser media · WebCodecs · WebGPU · ONNX Runtime · AI model integration · timeline UX · performance · testing · localization · accessibility · documentation · automation tooling
 
 Before submitting a change:
 
+bash
 npm run check
-
-For contribution guidelines, see:
-
-CONTRIBUTING.md
+For contribution guidelines, see CONTRIBUTING.md.
 
 Useful Commands
-
+bash
 # Development
 npm run dev
 
@@ -1253,8 +700,6 @@ npm run check
 
 # Formatting
 npm run format
-
-# Formatting validation
 npm run format:check
 
 # Timeline agent
@@ -1268,53 +713,28 @@ npm run skill:doctor
 
 # Skill setup
 npm run skill:setup
-
 Project Philosophy
-
 Timeline Studio is built around a few architectural principles:
 
-01 — Browser as a compute platform
-
-The browser is treated as a serious execution environment rather than merely a presentation layer.
-
-02 — Local-first media
-
-When technically supported, media processing and AI inference should happen close to the user's device.
-
-03 — Structured editing
-
-The timeline is structured, inspectable data.
-
-04 — Deterministic output
-
-Export should be reproducible from the project representation.
-
-05 — Progressive AI
-
-AI features should load when needed instead of forcing every model into the initial application payload.
-
-06 — Graceful degradation
-
-The application should provide fallbacks when browser capabilities, GPU acceleration, or specific model runtimes are unavailable.
-
-07 — Automation-friendly workflows
-
-An editable project representation makes video editing more suitable for programmatic tooling and AI agents.
-
+#	Principle	Description
+01	Browser as a compute platform	The browser is treated as a serious execution environment rather than merely a presentation layer.
+02	Local-first media	When technically supported, media processing and AI inference should happen close to the user's device.
+03	Structured editing	The timeline is structured, inspectable data.
+04	Deterministic output	Export should be reproducible from the project representation.
+05	Progressive AI	AI features should load when needed instead of forcing every model into the initial application payload.
+06	Graceful degradation	The application should provide fallbacks when browser capabilities, GPU acceleration, or specific model runtimes are unavailable.
+07	Automation-friendly workflows	An editable project representation makes video editing more suitable for programmatic tooling and AI agents.
 What Makes the Architecture Different?
+The interesting engineering challenge is not simply integrating an AI model. It is coordinating:
 
-The interesting engineering challenge is not simply integrating an AI model.
-
-It is coordinating:
-
+text
                ┌─────────────┐
                │   React UI  │
                └──────┬──────┘
-                      │
-               ┌──────▼──────┐
+                      ▼
+               ┌─────────────┐
                │   Timeline  │
                └──────┬──────┘
-                      │
           ┌───────────┼───────────┐
           ▼           ▼           ▼
        VIDEO        AUDIO         AI
@@ -1325,50 +745,38 @@ It is coordinating:
           └───────────┼───────────┘
                       ▼
                 COMPOSITION
-                      │
                       ▼
                    EXPORT
-
-while keeping the application responsive and preserving an editable project model.
+…while keeping the application responsive and preserving an editable project model.
 
 That combination makes Timeline Studio as much a browser systems project as it is a video editor.
 
 Demo
-
-Live Editor
-
-https://video-editor.ai-creator.top/
-
-YouTube
-
-https://youtu.be/bqKhpPPa-qo
-
-Hugging Face Space
-
-https://huggingface.co/spaces/haixin/timeline-studio
-
+Resource	Link
+🌐 Live Editor	video-editor.ai-creator.top
+▶️ YouTube	youtu.be/bqKhpPPa-qo
+🤗 Hugging Face Space	huggingface.co/spaces/haixin/timeline-studio
 Interactive Showcase
-
 The repository can also be paired with the included cinematic portfolio showcase page to demonstrate:
 
-the architecture;
+The architecture
 
-the AI pipeline;
+The AI pipeline
 
-the interactive timeline;
+The interactive timeline
 
-local inference;
+Local inference
 
-media processing;
+Media processing
 
-export flow;
+Export flow
 
-recruiter-oriented engineering overview.
+Recruiter-oriented engineering overview
 
 Screenshots & Media
-
 Recommended repository presentation:
 
+text
 docs/
 └── screenshots/
     ├── editor-timeline.png
@@ -1377,41 +785,32 @@ docs/
     ├── captions.png
     ├── smart-framing.png
     └── export.png
-
-For a polished GitHub landing page, place the strongest editor screenshot directly below the project overview and use short GIF/video demonstrations for the most visual AI workflows.
+💡 Tip: For a polished GitHub landing page, place the strongest editor screenshot directly below the project overview and use short GIF/video demonstrations for the most visual AI workflows.
 
 Status
-
 Timeline Studio is an actively developed browser AI media application.
 
 The architecture continues to evolve around:
 
-browser-native AI;
+Browser-native AI
 
-deterministic rendering;
+Deterministic rendering
 
-timeline reliability;
+Timeline reliability
 
-media interoperability;
+Media interoperability
 
-AI-assisted editing;
+AI-assisted editing
 
-automation;
+Automation
 
-local-first workflows.
+Local-first workflows
 
 License
-
 The original Timeline Studio source code is licensed under the MIT License.
 
 Third-party models, weights, datasets, media, fonts, and other assets remain subject to their respective licenses and terms.
 
 See MODEL_LICENSES.md for model-specific licensing information.
 
-<p align="center">
-
-Timeline Studio
-
-Browser-native AI video editing · Local-first inference · Structured timelines · Deterministic media export
-
-</p>
+<p align="center"> <strong>Timeline Studio</strong><br/> <em>Browser-native AI video editing · Local-first inference · Structured timelines · Deterministic media export</em> </p><p align="center"> <a href="https://video-editor.ai-creator.top/">Live Demo</a> · <a href="https://github.com/MartinDelophy/ai-video-editor">Source</a> · <a href="ROADMAP.md">Roadmap</a> · <a href="CONTRIBUTING.md">Contributing</a> </p>
